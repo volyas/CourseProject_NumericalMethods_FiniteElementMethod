@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProject_NumericalMethods_FiniteElementMethod", "CourseProject_NumericalMethods_FiniteElementMethod\CourseProject_NumericalMethods_FiniteElementMethod.csproj", "{5ABE1D43-1399-440B-9261-11D6ACBAE5BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ABE1D43-1399-440B-9261-11D6ACBAE5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ABE1D43-1399-440B-9261-11D6ACBAE5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ABE1D43-1399-440B-9261-11D6ACBAE5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ABE1D43-1399-440B-9261-11D6ACBAE5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FED4ED9-E6B3-45F6-8475-99FE83A74B36}
+	EndGlobalSection
+EndGlobal
