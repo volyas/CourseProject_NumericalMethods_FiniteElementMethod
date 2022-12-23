@@ -49,6 +49,4 @@ public class LocalVector
 
         return vector;
     }
-
-    public IEnumerator<double> GetEnumerator() => (IEnumerator<double>)Vector.GetEnumerator();
 }

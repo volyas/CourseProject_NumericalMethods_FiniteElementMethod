@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CourseProject_NumericalMethods_FiniteElementMethod": {
+      "commandName": "Project",
+      "workingDirectory": "..\\CourseProject_NumericalMethods_FiniteElementMethod"
+    }
+  }
+}
