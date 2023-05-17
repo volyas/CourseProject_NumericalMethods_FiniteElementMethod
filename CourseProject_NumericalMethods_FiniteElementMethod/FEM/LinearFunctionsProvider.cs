@@ -1,4 +1,4 @@
-﻿namespace UMF3.FEM;
+﻿namespace CourseProject.FEM;
 
 public class LinearFunctionsProvider
 {

@@ -1,5 +1,6 @@
 ﻿using CourseProject.Calculus;
 using CourseProject.Core.GridComponents;
+using CourseProject.FEM;
 using CourseProject.GridGenerator;
 using CourseProject.GridGenerator.Area.Core;
 using CourseProject.GridGenerator.Area.Splitting;
@@ -14,8 +15,6 @@ using CourseProject.ThreeDimensional.Assembling.MatrixTemplates;
 using CourseProject.ThreeDimensional.Parameters;
 using CourseProject.Time;
 using System.Globalization;
-using UMF3.FEM;
-using UMF3.ThreeDimensional.MatrixTemplates;
 
 Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 

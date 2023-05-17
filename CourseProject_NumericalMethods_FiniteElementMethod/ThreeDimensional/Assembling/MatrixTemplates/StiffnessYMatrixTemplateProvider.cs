@@ -1,7 +1,7 @@
 ﻿using CourseProject.Core.Base;
 using CourseProject.FEM.Assembling;
 
-namespace UMF3.ThreeDimensional.MatrixTemplates;
+namespace CourseProject.ThreeDimensional.Assembling.MatrixTemplates;
 
 public class StiffnessYMatrixTemplateProvider : ITemplateMatrixProvider
 {

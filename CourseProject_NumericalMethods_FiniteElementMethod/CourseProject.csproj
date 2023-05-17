@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="ThreeDimensional\FEMSolution.cs~RF1bfe6de5.TMP" />
+    <None Remove="Time\omx3dfd3.x2o~" />
   </ItemGroup>
 
 </Project>

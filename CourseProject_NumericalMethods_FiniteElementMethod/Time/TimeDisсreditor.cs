@@ -2,11 +2,11 @@
 using CourseProject.Core.BoundaryConditions;
 using CourseProject.Core.Global;
 using CourseProject.Core.GridComponents;
+using CourseProject.SLAE.Solvers;
 using CourseProject.ThreeDimensional.Assembling;
 using CourseProject.ThreeDimensional.Assembling.Boundary;
 using CourseProject.ThreeDimensional.Assembling.Global;
 using CourseProject.Time.Schemes.Explicit;
-using UMF3.SLAE.Solvers;
 
 namespace CourseProject.Time;
 

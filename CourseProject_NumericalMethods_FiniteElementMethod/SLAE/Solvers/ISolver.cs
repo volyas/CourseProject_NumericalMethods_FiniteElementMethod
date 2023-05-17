@@ -1,6 +1,6 @@
 ﻿using CourseProject.Core.Global;
 
-namespace UMF3.SLAE.Solvers;
+namespace CourseProject.SLAE.Solvers;
 
 public interface ISolver<TMatrix>
 {

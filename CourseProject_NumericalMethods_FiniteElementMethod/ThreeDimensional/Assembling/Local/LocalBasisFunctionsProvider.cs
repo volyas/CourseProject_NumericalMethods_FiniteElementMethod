@@ -1,6 +1,6 @@
 ﻿using CourseProject.Core;
 using CourseProject.Core.GridComponents;
-using UMF3.FEM;
+using CourseProject.FEM;
 
 namespace CourseProject.ThreeDimensional.Assembling.Local;
 
