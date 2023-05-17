@@ -1,8 +1,12 @@
 {
   "profiles": {
-    "CourseProject_NumericalMethods_FiniteElementMethod": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "UMF3": {
       "commandName": "Project",
-      "workingDirectory": "..\\CourseProject_NumericalMethods_FiniteElementMethod"
+      "workingDirectory": "..\\UMF3"
     }
   }
 }
