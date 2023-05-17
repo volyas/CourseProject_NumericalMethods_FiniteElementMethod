@@ -42,7 +42,7 @@ public class FEMSolution
                     .Sum() * lagrangePolynomials[j](time);
             }
 
-            CourseHolder.WriteSolution(point, time, sum);
+            //CourseHolder.WriteSolution(point, time, sum);
 
             return sum;
         }

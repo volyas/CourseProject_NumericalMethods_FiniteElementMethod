@@ -55,8 +55,8 @@ var localAssembler = new LocalAssembler(new MassMatrixTemplateProvider(), new St
 var inserter = new Inserter();
 var globalAssembler = new GlobalAssembler<Node3D>(new MatrixPortraitBuilder(), localAssembler, inserter);
 
-var timeLayers = new UniformSplitter(3)
-    .EnumerateValues(new Interval(1, 1 + 4e-14))
+var timeLayers = new UniformSplitter(4)
+    .EnumerateValues(new Interval(1, 1 + 4e-8))
     .ToArray();
 
 var secondConditionTemplate = new SecondConditionMatrixTemplateProvider();
@@ -84,7 +84,7 @@ var solutions =
         (
             new[] { 0, 0 },
             new[] { Bound.Front, Bound.Back },
-            new[] { 1d, 1d, 1d }
+            new[] { 1d, 1d }
         )
         //.SetFirstConditions
         //(
@@ -100,6 +100,7 @@ var solutions =
         .GetSolutions();
 
 var femSolution = new FEMSolution(grid, solutions, timeLayers, localBasisFunctionsProvider);
-femSolution.Calculate(new Node3D(2d, 2d, 2d), 1 + 2.2e-14);
+//femSolution.Calculate(new Node3D(2d, 2d, 2d), 1 + 2.2e-5);
+var error = femSolution.CalcError((p, t) => p.X * t, 1 + 4e-8);
 
-Console.WriteLine();
+Console.WriteLine(error);
