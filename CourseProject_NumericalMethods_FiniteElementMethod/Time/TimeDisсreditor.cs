@@ -32,6 +32,7 @@ public class TimeDisсreditor
     private readonly SecondBoundaryProvider _secondBoundaryProvider;
     private readonly ThirdBoundaryProvider _thirdBoundaryProvider;
     private readonly Inserter _inserter;
+    private TwoLayer _twoLayer;
     private ThreeLayer _threeLayer;
     private FourLayer _fourLayer;
     private int[]? _firstConditionIndexes;
@@ -86,12 +87,11 @@ public class TimeDisсreditor
     public TimeDisсreditor SetSecondInitialSolution(Func<Node3D, double, double> u)
     {
         var initialSolution = new GlobalVector(_grid.Nodes.Length);
-        var prevTime = PreviousTime;
         var currentTime = CurrentTime;
 
         for (var i = 0; i < _grid.Nodes.Length; i++)
         {
-            initialSolution[i] = PreviousSolution[i] + u(_grid.Nodes[i], prevTime) * (currentTime - prevTime);
+            initialSolution[i] = u(_grid.Nodes[i], currentTime);
         }
 
         TimeSolutions[_currentTimeLayer] = initialSolution;
@@ -103,10 +103,11 @@ public class TimeDisсreditor
     public TimeDisсreditor SetThirdInitialSolution(Func<Node3D, double, double> u)
     {
         var initialSolution = new GlobalVector(_grid.Nodes.Length);
+        var currentTime = CurrentTime;
 
         for (var i = 0; i < _grid.Nodes.Length; i++)
         {
-            initialSolution[i] = u(_grid.Nodes[i], CurrentTime);
+            initialSolution[i] = u(_grid.Nodes[i], currentTime);
         }
 
         TimeSolutions[_currentTimeLayer] = initialSolution;
@@ -161,12 +162,16 @@ public class TimeDisсreditor
         var sigmaMass = _globalAssembler.AssembleSigmaMassMatrix(_grid);
         var timeDeltasCalculator = new TimeDeltasCalculator();
 
+        _twoLayer = new TwoLayer(stiffness, sigmaMass);
         _threeLayer = new ThreeLayer(stiffness, sigmaMass, timeDeltasCalculator);
         _fourLayer = new FourLayer(stiffness, sigmaMass, timeDeltasCalculator);
 
         while (_currentTimeLayer < _timeLayers.Length)
         {
-            var equation = TimeSolutions[2] != null ? UseFourLayerScheme() : UseThreeLayerScheme();
+            Equation<SymmetricSparseMatrix> equation;
+            if (TimeSolutions[1] == null) equation = UseTwoLayerScheme();
+            else if (TimeSolutions[2] == null) equation = UseThreeLayerScheme();
+            else equation = UseFourLayerScheme();
 
             if (_secondConditionIndexes != null && _secondConditionBounds != null)
             {
@@ -193,6 +198,20 @@ public class TimeDisсreditor
         }
 
         return TimeSolutions;
+    }
+
+    private Equation<SymmetricSparseMatrix> UseTwoLayerScheme()
+    {
+        var equation = _twoLayer
+            .BuildEquation
+            (
+                _globalAssembler.AssembleRightPart(_grid, PreviousTime),
+                PreviousSolution,
+                CurrentTime,
+                PreviousTime
+            );
+
+        return equation;
     }
 
     private Equation<SymmetricSparseMatrix> UseThreeLayerScheme()

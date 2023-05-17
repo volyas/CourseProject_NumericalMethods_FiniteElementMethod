@@ -57,7 +57,7 @@ var inserter = new Inserter();
 var globalAssembler = new GlobalAssembler<Node3D>(new MatrixPortraitBuilder(), localAssembler, inserter);
 
 var timeLayers = new UniformSplitter(3)
-    .EnumerateValues(new Interval(1, 1.0004))
+    .EnumerateValues(new Interval(1, 1 + 4e-14))
     .ToArray();
 
 var secondConditionTemplate = new SecondConditionMatrixTemplateProvider();
@@ -74,8 +74,8 @@ var timeDiscreditor = new TimeDisсreditor(globalAssembler, timeLayers, grid, fi
 var solutions =
     timeDiscreditor
         .SetFirstInitialSolution((p, t) => p.X * t)
-        .SetSecondInitialSolution((p, t) => p.X)
-        //.SetThirdInitialSolution((p, t) => p.R * t)
+        //.SetSecondInitialSolution((p, t) => p.X * t)
+        //.SetThirdInitialSolution((p, t) => p.X * t)
         .SetSecondConditions
         (
             new[] { 0, 0, 0 },
