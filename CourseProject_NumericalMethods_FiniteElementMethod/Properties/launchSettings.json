@@ -4,9 +4,9 @@
       "commandName": "WSL2",
       "distributionName": ""
     },
-    "UMF3": {
+    "CourseProject": {
       "commandName": "Project",
-      "workingDirectory": "..\\UMF3"
+      "workingDirectory": "..\\CourseProject_NumericalMethods_FiniteElementMethod"
     }
   }
 }

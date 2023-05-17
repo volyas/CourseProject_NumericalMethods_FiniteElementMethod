@@ -6,7 +6,6 @@ using CourseProject.ThreeDimensional.Assembling;
 using CourseProject.ThreeDimensional.Assembling.Boundary;
 using CourseProject.ThreeDimensional.Assembling.Global;
 using CourseProject.Time.Schemes.Explicit;
-using CourseProject.TwoDimensional.Assembling.Global;
 using UMF3.SLAE.Solvers;
 
 namespace CourseProject.Time;
@@ -160,11 +159,10 @@ public class TimeDisсreditor
     {
         var stiffness = _globalAssembler.AssembleStiffnessMatrix(_grid);
         var sigmaMass = _globalAssembler.AssembleSigmaMassMatrix(_grid);
-        var chiMass = _globalAssembler.AssembleChiMassMatrix(_grid);
         var timeDeltasCalculator = new TimeDeltasCalculator();
 
-        _threeLayer = new ThreeLayer(stiffness, sigmaMass, chiMass, timeDeltasCalculator);
-        _fourLayer = new FourLayer(stiffness, sigmaMass, chiMass, timeDeltasCalculator);
+        _threeLayer = new ThreeLayer(stiffness, sigmaMass, timeDeltasCalculator);
+        _fourLayer = new FourLayer(stiffness, sigmaMass, timeDeltasCalculator);
 
         while (_currentTimeLayer < _timeLayers.Length)
         {

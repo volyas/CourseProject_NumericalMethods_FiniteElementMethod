@@ -1,7 +1,8 @@
-﻿using CourseProject.Core.Global;
+﻿using CourseProject.Core.BoundaryConditions;
+using CourseProject.Core.Global;
 using CourseProject.FEM.Assembling.Global;
 
-namespace CourseProject.TwoDimensional.Assembling.Global;
+namespace CourseProject.ThreeDimensional.Assembling.Global;
 
 public class GaussExcluder : IGaussExcluder<SymmetricSparseMatrix>
 {

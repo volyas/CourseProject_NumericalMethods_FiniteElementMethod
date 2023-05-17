@@ -13,7 +13,6 @@ using CourseProject.ThreeDimensional.Assembling.Local;
 using CourseProject.ThreeDimensional.Assembling.MatrixTemplates;
 using CourseProject.ThreeDimensional.Parameters;
 using CourseProject.Time;
-using CourseProject.TwoDimensional.Assembling.Global;
 using System.Globalization;
 using UMF3.FEM;
 using UMF3.ThreeDimensional.MatrixTemplates;
@@ -58,7 +57,7 @@ var inserter = new Inserter();
 var globalAssembler = new GlobalAssembler<Node3D>(new MatrixPortraitBuilder(), localAssembler, inserter);
 
 var timeLayers = new UniformSplitter(3)
-    .EnumerateValues(new Interval(1, 1 + 4e-14))
+    .EnumerateValues(new Interval(1, 1.0004))
     .ToArray();
 
 var secondConditionTemplate = new SecondConditionMatrixTemplateProvider();
@@ -82,12 +81,12 @@ var solutions =
             new[] { 0, 0, 0 },
             new[] { Bound.Left, Bound.Right, Bound.Upper }
         )
-        //.SetThirdConditions
-        //(
-        //    new[] { 0, 0, 0 },
-        //    new[] { Bound.Left, Bound.Right, Bound.Upper },
-        //    new[] { 1d, 1d, 1d }
-        //)
+        .SetThirdConditions
+        (
+            new[] { 0, 0 },
+            new[] { Bound.Front, Bound.Back },
+            new[] { 1d, 1d, 1d }
+        )
         //.SetFirstConditions
         //(
         //    new[] { 0, 0, 1, 1, 2, 2, 3, 3 },

@@ -1,5 +1,6 @@
 ﻿using CourseProject.Core.Global;
 using CourseProject.SLAE.Preconditions.LLT;
+using UMF3.SLAE.Solvers;
 
 namespace CourseProject.SLAE.Solvers;
 

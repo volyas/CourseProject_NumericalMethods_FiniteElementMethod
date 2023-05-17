@@ -1,6 +1,8 @@
-﻿namespace UMF3.SLAE.Preconditions;
+﻿using CourseProject.Core.Global;
+
+namespace CourseProject.SLAE.Preconditions;
 
 public interface IPreconditioner<out TResult>
 {
-    public TResult Decompose(SparseMatrix globalMatrix);
+    public TResult Decompose(SymmetricSparseMatrix globalMatrix);
 }

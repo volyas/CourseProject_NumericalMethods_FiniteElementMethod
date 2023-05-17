@@ -27,7 +27,7 @@ public class FirstBoundaryProvider
 
             for (var j = 0; j < indexes.Length; j++)
             {
-                values[j] = _u(_grid.Nodes[indexes[i]], time);
+                values[j] = _u(_grid.Nodes[indexes[j]], time);
             }
 
             conditions.Add(new FirstCondition(indexes, values));
